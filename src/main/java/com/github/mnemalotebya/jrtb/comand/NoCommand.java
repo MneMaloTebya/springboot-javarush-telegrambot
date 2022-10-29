@@ -6,7 +6,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 public class NoCommand implements Command{
 
     private final SendBotMessageService sendBotMessageService;
-    private final static String NO_MESSAGE = "Я поддерживаю команды, начинающиеся со слеша(/).\\n\"\n" +
+    public final static String NO_MESSAGE = "Я поддерживаю команды, начинающиеся со слеша(/).\\n\"\n" +
             "           + \"Чтобы посмотреть список команд введите /help";
 
 

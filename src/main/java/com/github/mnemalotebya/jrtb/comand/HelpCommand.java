@@ -8,7 +8,7 @@ import static com.github.mnemalotebya.jrtb.comand.CommandName.*;
 public class HelpCommand implements Command{
 
     private final SendBotMessageService sendBotMessageService;
-    private final static String HELP_MESSAGE = String.format("✨<b>Дотупные команды</b>✨\n\n"
+    public final static String HELP_MESSAGE = String.format("✨<b>Дотупные команды</b>✨\n\n"
 
                     + "<b>Начать\\закончить работу с ботом</b>\n"
                     + "%s - начать работу со мной\n"
