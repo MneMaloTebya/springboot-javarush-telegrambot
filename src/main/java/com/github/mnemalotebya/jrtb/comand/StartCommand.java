@@ -10,8 +10,8 @@ public class StartCommand implements Command{
     private final SendBotMessageService sendBotMessageService;
     private final TelegramUserService telegramUserService;
 
-    public final static String START_MESSAGE = "Привет. Я Javarush Telegram Bot. Я помогу тебе быть в курсе последних " +
-            "статей тех авторов, котрые тебе интересны. Я еще маленький и только учусь.";
+    public final static String START_MESSAGE = "Привет. И отдельный привет Ане \u2764\uFE0F.\n" +
+            " Я Javarush Telegram Bot. Я еще маленький и только учусь.";
 
     public StartCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
