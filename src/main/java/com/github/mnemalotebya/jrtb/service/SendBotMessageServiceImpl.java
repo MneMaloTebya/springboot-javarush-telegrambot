@@ -1,6 +1,6 @@
 package com.github.mnemalotebya.jrtb.service;
 
-import com.github.mnemalotebya.jrtb.bot.JavaRushTelegramBot;
+import com.github.mnemalotebya.jrtb.bot.JavarushTelegramBot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -9,10 +9,10 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 @Service
 public class SendBotMessageServiceImpl implements SendBotMessageService {
 
-    private final JavaRushTelegramBot javaRushBot;
+    private final JavarushTelegramBot javaRushBot;
 
     @Autowired
-    public SendBotMessageServiceImpl(JavaRushTelegramBot javaRushBot) {
+    public SendBotMessageServiceImpl(JavarushTelegramBot javaRushBot) {
         this.javaRushBot = javaRushBot;
     }
 
