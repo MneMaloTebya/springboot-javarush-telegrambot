@@ -15,7 +15,6 @@ import static com.github.mnemalotebya.jrtb.comand.CommandName.ADD_GROUP_SUB;
 import static com.github.mnemalotebya.jrtb.comand.CommandUtils.getChatId;
 import static com.github.mnemalotebya.jrtb.comand.CommandUtils.getMessage;
 import static java.util.Objects.isNull;
-import static org.hibernate.query.criteria.internal.ValueHandlerFactory.isNumeric;
 
 public class AddGroupSubCommand implements Command {
 
@@ -38,7 +37,6 @@ public class AddGroupSubCommand implements Command {
         }
         String groupId = getMessage(update).split(SPACE)[1];
         String chatId = getChatId(update);
-//        if (isNumeric(groupId)) {
         if (groupId != null && groupId.matches("[-+]?\\d*\\.?\\d+")) {
             GroupDiscussionInfo groupById = javaRushGroupClient.getGroupById(Integer.parseInt(groupId));
             if (isNull(groupById.getId())) {
@@ -67,7 +65,7 @@ public class AddGroupSubCommand implements Command {
                 .collect(Collectors.joining());
 
         String message = "Чтобы подписаться на группу - передай комадну вместе с ID группы. \n" +
-                "Например: /addGroupSub 16 \n\n" +
+                "Например: /addgroupsub 16 \n\n" +
                 "я подготовил список всех групп - выбирай какую хочешь :) \n\n" +
                 "имя группы - ID группы \n\n" +
                 "%s";
