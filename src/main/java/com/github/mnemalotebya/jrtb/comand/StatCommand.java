@@ -1,10 +1,12 @@
 package com.github.mnemalotebya.jrtb.comand;
 
+import com.github.mnemalotebya.jrtb.comand.annotation.AdminCommand;
 import com.github.mnemalotebya.jrtb.service.SendBotMessageService;
 import com.github.mnemalotebya.jrtb.service.TelegramUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+@AdminCommand
 public class StatCommand implements Command{
 
     private final TelegramUserService telegramUserService;
