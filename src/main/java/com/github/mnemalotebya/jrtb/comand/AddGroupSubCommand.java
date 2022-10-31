@@ -57,7 +57,7 @@ public class AddGroupSubCommand implements Command {
     private void sendNotValidGroupID(String chatId, String groupId) {
         String groupNotFoundMessage = "Неправильный ID группы = \"%s\"";
         sendBotMessageService.sendMessage(chatId, String.format(groupNotFoundMessage, groupId));
-        ;    }
+    }
 
     private void sendGroupIdList(String chatId) {
         String groupIds = javaRushGroupClient.getGroupList(GroupRequestArgs.builder().build()).stream()

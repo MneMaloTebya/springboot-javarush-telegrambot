@@ -1,5 +1,6 @@
 package com.github.mnemalotebya.jrtb.service;
 
+import com.github.mnemalotebya.jrtb.javarushclient.JavaRushGroupClient;
 import com.github.mnemalotebya.jrtb.javarushclient.dto.GroupDiscussionInfo;
 import com.github.mnemalotebya.jrtb.repository.GroupSubRepository;
 import com.github.mnemalotebya.jrtb.repository.entity.GroupSub;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.NotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,11 +17,14 @@ public class GroupSubServiceImpl implements GroupSubService{
 
     private final GroupSubRepository groupSubRepository;
     private final TelegramUserService telegramUserService;
+    private final JavaRushGroupClient javaRushGroupClient;
 
     @Autowired
-    public GroupSubServiceImpl(GroupSubRepository groupSubRepository, TelegramUserService telegramUserService) {
+    public GroupSubServiceImpl(GroupSubRepository groupSubRepository, TelegramUserService telegramUserService
+            , JavaRushGroupClient javaRushGroupClient) {
         this.groupSubRepository = groupSubRepository;
         this.telegramUserService = telegramUserService;
+        this.javaRushGroupClient = javaRushGroupClient;
     }
 
     @Override
@@ -39,6 +44,7 @@ public class GroupSubServiceImpl implements GroupSubService{
         } else {
             groupSub = new GroupSub();
             groupSub.addUser(telegramUser);
+            groupSub.setLastPostId(javaRushGroupClient.findLastArticleId(groupDiscussionInfo.getId()));
             groupSub.setId(groupDiscussionInfo.getId());
             groupSub.setTitle(groupDiscussionInfo.getTitle());
         }
@@ -53,5 +59,10 @@ public class GroupSubServiceImpl implements GroupSubService{
     @Override
     public Optional<GroupSub> findById(Integer id) {
         return groupSubRepository.findById(id);
+    }
+
+    @Override
+    public List<GroupSub> findAll() {
+        return groupSubRepository.findAll();
     }
 }
